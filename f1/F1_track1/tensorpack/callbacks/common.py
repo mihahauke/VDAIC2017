@@ -1,0 +1,120 @@
+# -*- coding: UTF-8 -*-
+# File: common.py
+# Author: Yuxin Wu <ppwwyyxx@gmail.com>
+
+import tensorflow as tf
+import os, shutil
+import re
+
+from .base import Callback
+from ..utils import *
+from ..tfutils.varmanip import get_savename_from_varname
+
+__all__ = ['ModelSaver', 'MinSaver', 'MaxSaver']
+
+class ModelSaver(Callback):
+    """
+    Save the model to logger directory.
+    """
+    def __init__(self, keep_recent=10, keep_freq=0.5,
+            var_collections=tf.GraphKeys.VARIABLES):
+        """
+        :param keep_recent: see `tf.train.Saver` documentation.
+        :param keep_freq: see `tf.train.Saver` documentation.
+        """
+        self.keep_recent = keep_recent
+        self.keep_freq = keep_freq
+        if not isinstance(var_collections, list):
+            var_collections = [var_collections]
+        self.var_collections = var_collections
+
+    def _setup_graph(self):
+        vars = []
+        for key in self.var_collections:
+            vars.extend(tf.get_collection(key))
+        self.path = os.path.join(logger.LOG_DIR, 'model')
+        self.saver = tf.train.Saver(
+            var_list=ModelSaver._get_var_dict(vars),
+            max_to_keep=self.keep_recent,
+            keep_checkpoint_every_n_hours=self.keep_freq)
+        self.meta_graph_written = False
+
+    @staticmethod
+    def _get_var_dict(vars):
+        var_dict = {}
+        for v in vars:
+            name = get_savename_from_varname(v.name)
+            if name not in var_dict:
+                if name != v.name:
+                    logger.info(
+                        "{} renamed to {} when saving model.".format(v.name, name))
+                var_dict[name] = v
+            else:
+                logger.warn("Variable {} won't be saved \
+because {} will be saved".format(v.name, var_dict[name].name))
+        return var_dict
+
+    def _trigger_epoch(self):
+        try:
+            if not self.meta_graph_written:
+                self.saver.export_meta_graph(
+                        os.path.join(logger.LOG_DIR,
+                            'graph-{}.meta'.format(logger.get_time_str())),
+                        collection_list=self.graph.get_all_collection_keys())
+                self.meta_graph_written = True
+            self.saver.save(
+                tf.get_default_session(),
+                self.path,
+                global_step=self.global_step,
+                write_meta_graph=False)
+
+            # create a symbolic link for the latest model
+            latest = self.saver.last_checkpoints[-1]
+            basename = os.path.basename(latest)
+            linkname = os.path.join(os.path.dirname(latest), 'latest')
+            try:
+                os.unlink(linkname)
+            except OSError:
+                pass
+            os.symlink(basename, linkname)
+        except (OSError, IOError):   # disk error sometimes.. just ignore it
+            logger.exception("Exception in ModelSaver.trigger_epoch!")
+
+class MinSaver(Callback):
+    def __init__(self, monitor_stat, reverse=True):
+        self.monitor_stat = monitor_stat
+        self.reverse = reverse
+        self.min = None
+
+    def _get_stat(self):
+        return self.trainer.stat_holder.get_stat_now(self.monitor_stat)
+
+    def _need_save(self):
+        if self.reverse:
+            return self._get_stat() > self.min
+        else:
+            return self._get_stat() < self.min
+
+    def _trigger_epoch(self):
+        if self.min is None or self._need_save():
+            self.min = self._get_stat()
+            self._save()
+
+    def _save(self):
+        ckpt = tf.train.get_checkpoint_state(logger.LOG_DIR)
+        if ckpt is None:
+            raise RuntimeError(
+                "Cannot find a checkpoint state. Do you forget to use ModelSaver?")
+        path = chpt.model_checkpoint_path
+        newname = os.path.join(logger.LOG_DIR,
+                'max-' if self.reverse else 'min-' + self.monitor_stat)
+        shutil.copy(path, newname)
+        logger.info("Model with {} '{}' saved.".format(
+            'maximum' if self.reverse else 'minimum', self.monitor_stat))
+
+class MaxSaver(MinSaver):
+    def __init__(self, monitor_stat):
+        super(MaxSaver, self).__init__(monitor_stat, True)
+
+
+

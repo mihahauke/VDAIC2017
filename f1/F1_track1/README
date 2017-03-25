@@ -1,0 +1,23 @@
+Team name: F1
+
+System: Ubuntu
+Language: Python2
+
+##################################################################
+# Dependencies:
+
+Python packages:
+- Tensorflow 0.9.0
+- numpy >= 1.11.0
+- opencv >= 2
+- termcolor
+- tqdm
+- msgpack-python
+- msgpack-numpy
+- subprocess32
+
+
+##################################################################
+# Additional Information #
+
+
