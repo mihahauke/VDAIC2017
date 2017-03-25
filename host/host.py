@@ -13,22 +13,22 @@ SCENARIO = "cig2017.wad"
 if __name__ == "__main__":
     parser = ArgumentParser("Host script for ViZDoom Copmetition at CIG 2017.",
                             formatter_class=ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--bots', '-b', metavar="BOTS_NUM", dest='bots_num',
+    parser.add_argument('-b', '--bots', metavar="BOTS_NUM", dest='bots_num',
                         default=0, type=int,
                         help='number of bots to add [0,15]')
-    parser.add_argument('--p', '-players', metavar="PLAYERS_NUM", dest='players_num',
+    parser.add_argument('-p', '--players', metavar="PLAYERS_NUM", dest='players_num',
                         default=1, type=int,
                         help='number of players [1,16]')
-    parser.add_argument('--m', '-map', metavar="MAP", dest='map',
+    parser.add_argument('-m', '--map', metavar="MAP", dest='map',
                         default=1, type=int,
                         help='map number [1,{}]'.format(MAX_MAP))
-    parser.add_argument('--t', '-time', metavar="TIMELIMIT", dest='timelimit',
+    parser.add_argument('-t', '--time', metavar="TIMELIMIT", dest='timelimit',
                         default=DEFAULT_TIMELIMIT, type=int,
                         help='timelimit in minutes [1,{}]'.format(MAX_TIMELIMIT))
-    parser.add_argument('--c', '-console', dest='console_enabled', action='store_const',
+    parser.add_argument('-c', '--console', dest='console_enabled', action='store_const',
                         default=False, const=True,
                         help='enable console')
-    parser.add_argument('--w', '-watch', dest='watch', action='store_const',
+    parser.add_argument('-w', '--watch', dest='watch', action='store_const',
                         default=False, const=True,
                         help='roam the map as a ghost spectator')
 
