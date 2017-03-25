@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.idea
+doom2.wad
+*.ini
