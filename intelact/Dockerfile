@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
 
+# Cuda 7.5 with cudnn 5
+FROM nvidia/cuda:7.5-cudnn5-devel
+
 # ViZdoom dependencies
 RUN apt-get update
 RUN apt-get install -y \
@@ -32,8 +35,7 @@ RUN apt-get install -y \
     wget \
     zlib1g-dev
 
-# Cuda 7.5 with cudnn 5
-FROM nvidia/cuda:7.5-cudnn5-devel
+
 
 # Python with pip
 RUN apt-get install -y python-dev python python-pip
