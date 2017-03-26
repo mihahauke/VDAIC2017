@@ -1,4 +1,4 @@
-# Sample submissions for [Visual Doom AI Competition 2017 at cig2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
+# Sample submissions for [Visual Doom AI Competition 2017 at CIG2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers.
 ## How it will be run
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host)
@@ -17,7 +17,7 @@ DIR=host # or any other directory with Dockerfile
 ### Provided images:
 > By default all agents connect to **localhost** and disable window. To customize this behavior change **_vizdoom.cfg** file.
 
-* host - the image will be used for initiation the game. All agents are supposed to connect to the host. By default the host creates a deathmatch for 1 player on map01 with no bots lasting for 10 minutes but it's possible to override it with optional parameters.
+* [host](host) - the image will be used for initiation the game. All agents are supposed to connect to the host. By default the host creates a deathmatch for 1 player on map01 with no bots lasting for 10 minutes but it's possible to override it with optional parameters.
 
 ```
 # Sample usage:
