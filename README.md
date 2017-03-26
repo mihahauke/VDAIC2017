@@ -20,8 +20,8 @@ DIR=host # or any other directory with Dockerfile
 * [host](host) - the image will be used for initiation the game. All agents are supposed to connect to the host. By default the host creates a deathmatch for 1 player on map01 with no bots lasting for 10 minutes but it's possible to override it with optional parameters.
 
 ```
-# Sample usage:
-./run.sh host -p 8 -t 12 -m 1# game for 8 players for 12 minutes on map 1
+# Sample usage (game for 8 players lasting 12 minutes on map 1):
+./run.sh host -p 8 -t 12 -m 1
 
 usage: Host script for ViZDoom Copmetition at CIG 2017. [-h] [-b BOTS_NUM]
                                                         [-p PLAYERS_NUM]
