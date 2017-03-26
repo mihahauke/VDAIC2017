@@ -65,6 +65,7 @@ WORKDIR ${HOME_DIR}
 COPY host.py .
 COPY cig2017.wad .
 COPY _vizdoom.ini .
+RUN sudo chown ${HOST_UID}:${HOST_GID} -R _vizdoom.ini
 EXPOSE 5029
 
 # Uncomment to use doom2.wad:

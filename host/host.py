@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-from random import choice
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
-from vizdoom import *
+import vizdoom as vzd
 
 MAX_MAP = 5
 MAX_PLAYERS = 15
@@ -31,6 +30,8 @@ if __name__ == "__main__":
     parser.add_argument('-w', '--watch', dest='watch', action='store_const',
                         default=False, const=True,
                         help='roam the map as a ghost spectator')
+    #   TODO add recording settings
+    #   TODO add episodic results printing
 
     args = parser.parse_args()
 
@@ -57,8 +58,7 @@ if __name__ == "__main__":
             "Maximum timelimit of {} exceeded. "
             "This must be an erorr: {}".format(MAX_TIMELIMIT, timelimit))
 
-
-    game = DoomGame()
+    game = vzd.DoomGame()
 
     game.set_doom_map(map)
 
@@ -74,26 +74,26 @@ if __name__ == "__main__":
 
     game.set_render_weapon(False)
     game.set_render_hud(False)
-    game.add_available_button(Button.TURN_LEFT)
-    game.add_available_button(Button.TURN_RIGHT)
-    game.add_available_button(Button.MOVE_RIGHT)
-    game.add_available_button(Button.MOVE_LEFT)
-    game.add_available_button(Button.MOVE_FORWARD)
-    game.add_available_button(Button.MOVE_BACKWARD)
-    game.add_available_button(Button.TURN_LEFT_RIGHT_DELTA)
-    game.add_available_button(Button.LOOK_UP_DOWN_DELTA)
-    game.add_available_button(Button.SPEED)
-    game.add_available_button(Button.MOVE_UP)
-    game.add_available_button(Button.MOVE_DOWN)
+    game.add_available_button(vzd.Button.TURN_LEFT)
+    game.add_available_button(vzd.Button.TURN_RIGHT)
+    game.add_available_button(vzd.Button.MOVE_RIGHT)
+    game.add_available_button(vzd.Button.MOVE_LEFT)
+    game.add_available_button(vzd.Button.MOVE_FORWARD)
+    game.add_available_button(vzd.Button.MOVE_BACKWARD)
+    game.add_available_button(vzd.Button.TURN_LEFT_RIGHT_DELTA)
+    game.add_available_button(vzd.Button.LOOK_UP_DOWN_DELTA)
+    game.add_available_button(vzd.Button.SPEED)
+    game.add_available_button(vzd.Button.MOVE_UP)
+    game.add_available_button(vzd.Button.MOVE_DOWN)
 
     if watch:
-        game.set_mode(Mode.ASYNC_SPECTATOR)
+        game.set_mode(vzd.Mode.ASYNC_SPECTATOR)
         game.set_window_visible(True)
     else:
-        game.set_mode(Mode.ASYNC_PLAYER)
+        game.set_mode(vzd.Mode.ASYNC_PLAYER)
         game.set_window_visible(False)
 
-    game.set_screen_resolution(ScreenResolution.RES_1024X576)
+    game.set_screen_resolution(vzd.ScreenResolution.RES_1024X576)
 
     plural = "s"
     pn = "no"
@@ -105,11 +105,10 @@ if __name__ == "__main__":
     print("   WAD:        {}".format(SCENARIO))
     print("   TIMELIMIT:  {} min.".format(timelimit))
     print("   MAP:        {}".format(map))
-    print("   PLAYERS:    {}".format(players_num-1))
+    print("   PLAYERS:    {}".format(players_num - 1))
     print("   BOTS:       {}".format(bots_num))
     print("   CONSOLE:    {}".format(console_enabled))
     print()
-
     game.init()
 
     game.send_game_command("removebots")
