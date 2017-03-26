@@ -64,6 +64,10 @@ WORKDIR ${HOME_DIR}
 
 COPY host.py .
 COPY cig2017.wad .
+COPY _vizdoom.ini .
 EXPOSE 5029
+
+# Uncomment to use doom2.wad:
+#COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
 
 ENTRYPOINT ["./host.py"]
