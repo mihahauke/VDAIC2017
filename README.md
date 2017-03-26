@@ -55,5 +55,5 @@ optional arguments:
 
 ### External files
 Some submissions were to big to be shared reasonably on github so we share them externally:
-* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) by **Dino Ratcliffe**
+* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) - 3rd place in 2016 edition track 1 by **Dino Ratcliffe**
 
