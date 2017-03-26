@@ -1,4 +1,6 @@
+
 # Sample submissions for [Visual Doom AI Competition 2017 at CIG2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
+![doom_logo](https://upload.wikimedia.org/wikipedia/it/d/dd/Logo_doom.png)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers.
 ## How it will be run
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host)
@@ -50,4 +52,8 @@ optional arguments:
 * [no_host](no_host) - random agent which does **NOT** connect to the host - it hosts a game for itself and can add bots. This image won't be used by us but may be useful for training on bots.
 * [f1](f1) - winner submission of 2016 edition, track 1 by **Yuxin Wuand** and **Yuandong Tian**,
 * [intelact](intelact) - winner submission of 2016 edition, track 2  by **Alexey Dosovitskiy** and **Vladlen Koltun**.
+
+### External files
+Some submissions were to big to be shared reasonably on github so we share them externally:
+* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) by **Dino Ratcliffe**
 
