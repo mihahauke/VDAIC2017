@@ -3,26 +3,26 @@
 ![doom_logo](https://upload.wikimedia.org/wikipedia/it/d/dd/Logo_doom.png)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers.
 ## How it will be run
-We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host)
+We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host).
 
-To build and launch chosen container run:
+To build and launch a given container run:
 ```
-DIR=host # or any other directory with Dockerfile
+DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or intelact)
 
-# Builds a docker image named cig2017_${DIR}
+# Build a docker image named cig2017_${DIR}
 ./build.sh ${DIR} 
 
-# Runs docker image named cig2017_${DIR}
+# Run a docker image named cig2017_${DIR}
 ./run.sh ${DIR}
 ```
 
 ### Provided images:
-> By default all agents connect to **localhost** and disable window. To customize this behavior change **_vizdoom.cfg** file.
+> By defaultm, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file.
 
-* [host](host) - the image will be used for initiation the game. All agents are supposed to connect to the host. By default the host creates a deathmatch for 1 player on map01 with no bots lasting for 10 minutes but it's possible to override it with optional parameters.
+* [host](host) - the image will be used for the initialization of the game. All agents are supposed to connect to the host. By default, the host creates a 10-minutes deathmatch for 1 player on map01 with no bots. To change this behaviour use run.sh's optional parameters:
 
 ```
-# Sample usage (game for 8 players lasting 12 minutes on map 1):
+# Sample usage (a 12-minutes deathmatch for 8 players on map 1):
 ./run.sh host -p 8 -t 12 -m 1
 
 usage: Host script for ViZDoom Copmetition at CIG 2017. [-h] [-b BOTS_NUM]
@@ -42,18 +42,13 @@ optional arguments:
                         timelimit in minutes [1,999] (default: 10)
   -c, --console         enable console (default: False)
   -w, --watch           roam the map as a ghost spectator (default: False)
-
-  
-
 ```
 
-
-* [random](random)- random agent which connects to the host and doesn't do anything smart. By changing mode to ASYNC_SPECTATOR and enabling window visibility in **_vizdoom.cfg** you can replace the random.
-* [no_host](no_host) - random agent which does **NOT** connect to the host - it hosts a game for itself and can add bots. This image won't be used by us but may be useful for training on bots.
-* [f1](f1) - winner submission of 2016 edition, track 1 by **Yuxin Wuand** and **Yuandong Tian**,
-* [intelact](intelact) - winner submission of 2016 edition, track 2  by **Alexey Dosovitskiy** and **Vladlen Koltun**.
+* [random](random) - a random agent which connects to the host and does not do anything smart. By changing the mode to ASYNC_SPECTATOR and enabling window visibility in **_vizdoom.cfg** you can replace the random.
+* [no_host](no_host) - random agent which does **NOT** connect to the host - it hosts a game for itself and can add bots. This image won't be used by us but may be useful for training the bots.
+* [f1](f1) - the winner entry of the ViZDoom Competition 2016 Limitted Deathmatch by **Yuxin Wuand** and **Yuandong Tian**,
+* [intelact](intelact) - the winner entry of the ViZDoom Competition 2016 Full Deathmatch (track 2) by **Alexey Dosovitskiy** and **Vladlen Koltun**.
 
 ### External files
-Some submissions were to big to be shared reasonably on github so we share them externally:
-* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) - 3rd place in 2016 edition track 1 by **Dino Ratcliffe**
-
+Some entries were to big to be shared on github, so we provide them externally:
+* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) - the 3rd place of the ViZDoom Competition 2016 Limitted Deathmatch by **Dino Ratcliffe**
