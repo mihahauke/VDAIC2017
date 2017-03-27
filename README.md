@@ -5,7 +5,7 @@
 ## Building and Running the Images
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host).
 
-To build and launch a given container run:
+To build and launch given container run:
 ```
 DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or intelact)
 
@@ -17,7 +17,7 @@ DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or
 ```
 
 ### Provided images:
-> By defaultm, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file.
+> By default, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file.
 
 * [host](host) - the image will be used for the initialization of the game. All agents are supposed to connect to the host. By default, the host creates a 10-minutes deathmatch for 1 player on map01 with no bots. To change this behaviour use run.sh's optional parameters:
 
@@ -50,5 +50,5 @@ optional arguments:
 * [intelact](intelact) - the winner entry of the ViZDoom Competition 2016 Full Deathmatch (track 2) by **Alexey Dosovitskiy** and **Vladlen Koltun**.
 
 ### External files
-Some entries were to big to be shared on github, so we provide them externally:
+Some entries were too big to be shared on github, so we provide them externally:
 * [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) - the 3rd place of the ViZDoom Competition 2016 Limitted Deathmatch by **Dino Ratcliffe**
