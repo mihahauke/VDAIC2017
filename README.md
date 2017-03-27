@@ -2,7 +2,7 @@
 # Sample submissions for [Visual Doom AI Competition 2017 at CIG2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
 ![doom_logo](https://upload.wikimedia.org/wikipedia/it/d/dd/Logo_doom.png)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers.
-## How it will be run
+## Building and Running the Images
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host).
 
 To build and launch a given container run:
