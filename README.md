@@ -17,7 +17,7 @@ DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or
 ```
 
 ### Provided images:
-> By default, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file.
+> By default, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file and rebuild the image.
 
 * [host](host) - the image will be used for the initialization of the game. All agents are supposed to connect to the host. By default, the host creates a 10-minutes deathmatch for 1 player on map01 with no bots. To change this behaviour use run.sh's optional parameters:
 
