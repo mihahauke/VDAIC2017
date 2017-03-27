@@ -9,5 +9,5 @@ fi
 image_tag="cig2017_`basename $DIRECTORY`"
 container_name=${image_tag}
 
-docker  run -p 5029 --net=host -t --rm --name ${container_name} \
+docker  run -p 5029 --net=host -ti --rm --name ${container_name} \
     -e DISPLAY=${DISPLAY}  ${image_tag} "${@:2}"
