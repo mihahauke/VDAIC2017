@@ -22,7 +22,7 @@ if __name__ == "__main__":
                         default=1, type=int,
                         help='map number [1,{}]'.format(MAX_MAP))
     parser.add_argument('-t', '--time', metavar="TIMELIMIT", dest='timelimit',
-                        default=DEFAULT_TIMELIMIT, type=int,
+                        default=DEFAULT_TIMELIMIT, type=float,
                         help='timelimit in minutes [1,{}]'.format(MAX_TIMELIMIT))
     parser.add_argument('-c', '--console', dest='console_enabled', action='store_const',
                         default=False, const=True,
