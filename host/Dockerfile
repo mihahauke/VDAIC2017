@@ -39,8 +39,6 @@ RUN pip3 install pip --upgrade
 RUN pip3 --no-cache-dir install \
          git+https://github.com/mwydmuch/ViZDoom
 
-
-
 # Enables X11 sharing and creates user home directory
 ENV USER_NAME cig2017
 ENV HOME_DIR /home/$USER_NAME
@@ -49,7 +47,8 @@ ENV HOME_DIR /home/$USER_NAME
 ENV HOST_UID 1000
 ENV HOST_GID 1000
 
-RUN export uid=${HOST_UID} gid=${HOST_GID} && \
+RUN useradd -m ${USER_NAME} && \
+    export uid=${HOST_UID} gid=${HOST_GID} && \
     mkdir -p ${HOME_DIR} && \
     echo "$USER_NAME:x:${uid}:${gid}:$USER_NAME,,,:$HOME_DIR:/bin/bash" >> /etc/passwd && \
     echo "$USER_NAME:x:${uid}:" >> /etc/group && \
@@ -65,10 +64,10 @@ WORKDIR ${HOME_DIR}
 COPY host.py .
 COPY cig2017.wad .
 COPY _vizdoom.ini .
-RUN sudo chown ${HOST_UID}:${HOST_GID} -R _vizdoom.ini
-EXPOSE 5029
+RUN sudo chown ${HOST_UID}:${HOST_GID} -R *
 
 # Uncomment to use doom2.wad:
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
+
 
 ENTRYPOINT ["./host.py"]

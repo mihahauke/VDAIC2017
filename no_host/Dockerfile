@@ -94,9 +94,8 @@ COPY no_host.py .
 ### Do not change this ###
 COPY cig2017.wad .
 COPY _nohost_vizdoom.cfg _vizdoom.cfg
-EXPOSE 5029
 ##########################
 # Uncomment to use doom2.wad:
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
 
-CMD ./sample_random_agent.py
+CMD ./no_host.py
