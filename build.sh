@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+ERROR_PREFIX="ERROR:"
 DIRECTORY=$1
+REPO_ROOT=`pwd`
+
+# TODO add usage and error that no arguments specified
 if [ ! -d "$DIRECTORY" ]; then
-  echo "Directory '${DIRECTORY}' doesn't exist. Aborting'"
+  echo "${ERROR_PREFIX} Directory '${DIRECTORY}' doesn't exist. Aborting'" >&2
   exit 1
 fi
 
@@ -10,26 +14,27 @@ echo "Entering directory: ${DIRECTORY}"
 cd $DIRECTORY
 
 if [ ! -f Dockerfile ]; then
-  echo "No Dockerfile found. Aborting.'"
+  echo "${ERROR_PREFIX} No Dockerfile found. Aborting." >&2
   exit 2
 fi
 
 image_tag="cig2017_`basename $DIRECTORY`"
 container_name=${image_tag}
 
-if [ ! -f ../cig2017.wad ]; then
-  echo "cig2017.wad not found. Aborting."
+if [ ! -f ${REPO_ROOT}/cig2017.wad ]; then
+  echo "${ERROR_PREFIX} cig2017.wad not found. Aborting." >&2
   exit 3
 fi
-if [ ! -f ../_vizdoom.cfg ]; then
-  echo "_vizdoom.cfg not found. Aborting."
+if [ ! -f ${REPO_ROOT}/_vizdoom.cfg ]; then
+  echo "${ERROR_PREFIX} _vizdoom.cfg not found. Aborting." >&2
   exit 4
 fi
 
-cp ../cig2017.wad .
-cp ../_vizdoom.cfg .
-if [ -f ../doom2.wad ]; then
-  cp ../doom2.wad .
+echo ${REPO_ROOT}
+cp ${REPO_ROOT}/cig2017.wad .
+cp ${REPO_ROOT}/_vizdoom.cfg .
+if [ -f ${REPO_ROOT}/doom2.wad ]; then
+  cp ${REPO_ROOT}/doom2.wad .
 fi
 
 docker build -t ${image_tag} .
