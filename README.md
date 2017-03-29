@@ -48,7 +48,7 @@ optional arguments:
 
 * [random](random) - a random agent which connects to the host and does not do anything smart. By changing the mode to ASYNC_SPECTATOR and enabling window visibility in **_vizdoom.cfg** you can replace the random.
 * [no_host](no_host) - random agent which does **NOT** connect to the host - it hosts a game for itself and can add bots. This image won't be used by us but may be useful for training the bots.
-* [f1](f1) - the winner entry of the ViZDoom Competition 2016 Limitted Deathmatch by **Yuxin Wuand** and **Yuandong Tian**,
+* [f1](f1) - the winner entry of the ViZDoom Competition 2016 Limitted Deathmatch by **Yuxin Wu** and **Yuandong Tian**,
 * [intelact](intelact) - the winner entry of the ViZDoom Competition 2016 Full Deathmatch (track 2) by **Alexey Dosovitskiy** and **Vladlen Koltun**.
 
 ### External files
