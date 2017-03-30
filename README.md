@@ -3,7 +3,16 @@
 ![doom_logo](https://upload.wikimedia.org/wikipedia/it/d/dd/Logo_doom.png)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers and [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) to run CUDA.
 
->>> GUI forwarding from Docker was tested only on a Linux host and it's not guaranteed to work properly on other systems at the moment."
+>>> GUI forwarding from Docker was tested only on a Linux host and it's not guaranteed to work properly on other systems at the moment.
+
+## Quick Start
+```
+./build.sh host
+./build.sh random
+./run.sh host -w -t 1
+./run.sh random  # in a different terminal
+```
+
 ## Building and Running the Images
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host).
 
@@ -18,7 +27,7 @@ DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or
 ./run.sh ${DIR}
 ```
 
-### Provided images:
+### Provided Images
 > By default, the agents connect to **localhost** and have the GUI window disabled. To customize this behavior change **_vizdoom.cfg** file and rebuild the image.
 
 * [host](host) - the image will be used for the initialization of the game. All agents are supposed to connect to the host. By default, the host creates a 10-minutes deathmatch for 1 player on map01 with no bots. To change this behaviour use run.sh's optional parameters:
