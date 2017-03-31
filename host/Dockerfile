@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+FROM nvidia/cuda:8.0-cudnn5-devel
+
 # ViZdoom dependencies
 RUN apt-get update
 RUN apt-get install -y \
@@ -47,8 +49,7 @@ ENV HOME_DIR /home/$USER_NAME
 ENV HOST_UID 1000
 ENV HOST_GID 1000
 
-RUN useradd -m ${USER_NAME} && \
-    export uid=${HOST_UID} gid=${HOST_GID} && \
+RUN export uid=${HOST_UID} gid=${HOST_GID} && \
     mkdir -p ${HOME_DIR} && \
     echo "$USER_NAME:x:${uid}:${gid}:$USER_NAME,,,:$HOME_DIR:/bin/bash" >> /etc/passwd && \
     echo "$USER_NAME:x:${uid}:" >> /etc/group && \
