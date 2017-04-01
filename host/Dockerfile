@@ -1,7 +1,5 @@
 FROM ubuntu:16.04
 
-FROM nvidia/cuda:8.0-cudnn5-devel
-
 # ViZdoom dependencies
 RUN apt-get update
 RUN apt-get install -y \

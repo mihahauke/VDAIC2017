@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     game.set_doom_scenario_path(SCENARIO)
     game.add_game_args("-deathmatch +viz_nocheat 1 +viz_debug 0 +viz_respawn_delay 10")
-    game.add_game_args("sv_forcerespawn 1 +sv_noautoaim 1 +sv_respawnprotect 1 +sv_spawnfarthest 1 +sv_crouch 1")
+    game.add_game_args("+sv_forcerespawn 1 +sv_noautoaim 1 +sv_respawnprotect 1 +sv_spawnfarthest 1 +sv_crouch 1")
 
     game.add_game_args("+viz_spectator 1")
     game.add_game_args("+name ghost")
@@ -72,8 +72,6 @@ if __name__ == "__main__":
     game.add_game_args("+timelimit {}".format(timelimit))
     game.set_console_enabled(console_enabled)
 
-    game.set_render_weapon(False)
-    game.set_render_hud(False)
     game.add_available_button(vzd.Button.TURN_LEFT)
     game.add_available_button(vzd.Button.TURN_RIGHT)
     game.add_available_button(vzd.Button.MOVE_RIGHT)
