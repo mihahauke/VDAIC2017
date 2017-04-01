@@ -38,7 +38,8 @@ RUN apt-get install -y \
     unzip \
     wget \
     zlib1g-dev
-
+RUN apt-get update
+RUN apt-get install -y dbus
 
 # Python with pip
 RUN apt-get install -y python-dev python python-pip

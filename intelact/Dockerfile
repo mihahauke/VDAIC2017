@@ -40,6 +40,9 @@ RUN apt-get install -y \
     wget \
     zlib1g-dev
 
+RUN apt-get update
+RUN apt-get install -y dbus
+
 
 
 # Python with pip
@@ -87,5 +90,6 @@ COPY cig2017.wad .
 COPY _vizdoom.cfg .
 ##########################
 RUN sudo chown ${HOST_UID}:${HOST_GID} -R *
+
 
 CMD taskset -c 1 python run_agent.py
