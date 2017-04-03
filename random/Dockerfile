@@ -6,8 +6,7 @@ FROM ubuntu:16.04
 FROM nvidia/cuda:8.0-cudnn5-devel
 
 # ViZdoom dependencies
-RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     build-essential \
     bzip2 \
     cmake \
@@ -44,7 +43,7 @@ RUN apt-get install -y \
 #RUN pip install pip --upgrade
 
 # Python3 with pip3
-RUN apt-get install -y python3-dev python3 python3-pip
+RUN apt-get update && apt-get install -y python3-dev python3 python3-pip
 RUN pip3 install pip --upgrade
 
 
