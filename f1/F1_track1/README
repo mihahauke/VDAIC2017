@@ -20,4 +20,5 @@ Python packages:
 ##################################################################
 # Additional Information #
 
-
+This directory contains the original submission working under early version of TensorFlow + tensorpack.
+You can remove the `tensorpack` directory and apply [this patch](https://gist.github.com/ppwwyyxx/62d5723dea411a515ee1a52b1a87a637) to run under latest version of TesnroFlow + tensorpack.
