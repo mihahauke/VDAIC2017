@@ -17,7 +17,7 @@ fi
 
 DIRECTORY=$1
 if [ ! -d "$DIRECTORY" ]; then
-  echo "${ERROR_PREFIX} Directory '${DIRECTORY}' doesn't exist. Aborting'" >&2
+  echo "${ERROR_PREFIX} Directory '${DIRECTORY}' doesn't exist. Aborting." >&2
   exit 2
 fi
 

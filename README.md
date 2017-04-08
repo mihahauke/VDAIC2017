@@ -16,6 +16,8 @@
 ## Building and Running the Images
 We have prepared two wrapper scripts which will [build](build.sh) and [run](run.sh) docker images with agents and the [host](host).
 
+>>> To run gui on X11 properly make sure that GID and UID are the same in Dockerfile as in your host.
+
 To build and launch given container run:
 ```
 DIR=host # or any other directory with Dockerfile (e.g., random, f1, no_host, or intelact)
