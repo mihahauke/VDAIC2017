@@ -29,10 +29,12 @@ RUN apt-get update && apt-get install -y \
     timidity \
     unzip \
     wget \
-    zlib1g-dev
+    zlib1g-dev \
+    python3-dev \
+    python3 \
+    python3-pip
 
 # Python3
-RUN apt-get install -y python3-dev python3 python3-pip
 RUN pip3 install pip --upgrade
 
 RUN pip3 --no-cache-dir install \
