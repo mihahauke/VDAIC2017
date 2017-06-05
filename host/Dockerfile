@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
     timidity \
     unzip \
     wget \
+    locales \
     zlib1g-dev \
     python3-dev \
     python3 \
