@@ -38,7 +38,14 @@ RUN apt-get update && apt-get install -y \
 RUN pip3 install pip --upgrade
 
 RUN pip3 --no-cache-dir install \
-         git+https://github.com/mwydmuch/ViZDoom
+         git+https://github.com/mwydmuch/ViZDoom \
+         tabulate
+
+# Unicode support:
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Enables X11 sharing and creates user home directory
 ENV USER_NAME cig2017
@@ -65,6 +72,7 @@ COPY host.py .
 COPY cig2017.wad .
 COPY _vizdoom.ini .
 RUN sudo chown ${HOST_UID}:${HOST_GID} -R *
+
 
 # Uncomment to use doom2.wad:
 #COPY doom2.wad /usr/local/lib/python3.5/dist-packages/vizdoom
