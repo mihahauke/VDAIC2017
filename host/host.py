@@ -165,3 +165,10 @@ if __name__ == "__main__":
             if t % log_interval_tics == 0:
                 log = gather_log()
                 print_log(log, t)
+
+    print(20*"#")
+    print("Final results:")
+    t = game.get_episode_time()
+    log = gather_log()
+    print_log(log, t)
+
