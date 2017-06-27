@@ -11,7 +11,7 @@ MAX_PLAYERS = 15
 MAX_TIMELIMIT = 999
 DEFAULT_TIMELIMIT = 10
 WAD_FILE = "cig2017.wad"
-FRAMERATE = 30
+FRAMERATE = 35
 
 if __name__ == "__main__":
     parser = ArgumentParser("Host script for ViZDoom Copmetition at CIG 2017.",
@@ -165,10 +165,8 @@ if __name__ == "__main__":
             if t % log_interval_tics == 0:
                 log = gather_log()
                 print_log(log, t)
-
-    print(20*"#")
+    print(20 * "#")
     print("Final results:")
     t = game.get_episode_time()
     log = gather_log()
     print_log(log, t)
-
