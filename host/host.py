@@ -35,7 +35,7 @@ if __name__ == "__main__":
                         default=None, type=float,
                         help='results logging inreval in minutes')
     parser.add_argument('-c', '--console', dest='console_enabled', action='store_const',
-                        default=False, const=True,
+                        default=True, const=True,
                         help='enable console')
     parser.add_argument('-w', '--watch', dest='watch', action='store_const',
                         default=False, const=True,
