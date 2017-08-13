@@ -34,9 +34,9 @@ if __name__ == "__main__":
     parser.add_argument('-li', '--log-interval', metavar="LOG_INTERVAL", dest='log_interval',
                         default=None, type=float,
                         help='results logging inreval in minutes')
-    parser.add_argument('-c', '--console', dest='console_enabled', action='store_const',
-                        default=True, const=True,
-                        help='enable console')
+    parser.add_argument('-dc', '--console', dest='disable_console', action='store_true',
+                        default=False,
+                        help='disables console output')
     parser.add_argument('-w', '--watch', dest='watch', action='store_const',
                         default=False, const=True,
                         help='roam the map as a ghost spectator')
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     players_num = args.players_num
     bots_num = args.bots_num
     map = "map0" + str(args.map)
-    console_enabled = args.console_enabled
+    console_enabled = not args.disable_console
     timelimit = args.timelimit
     watch = args.watch
     record_file = args.recordfile
