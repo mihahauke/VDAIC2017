@@ -64,4 +64,4 @@ optional arguments:
 
 ### External files
 Some entries were too big to be shared on github, so we provide them externally:
-* [clyde](https://www.dropbox.com/sh/63pe04af95gi6c3/AACdhsbj1TLwKuV1NkcsPfLsa) - the 3rd place of the ViZDoom Competition 2016 Limitted Deathmatch by **Dino Ratcliffe**
+* [clyde](http://www.cs.put.poznan.pl/mkempka/misc/vizdoom2016_agents/clyde.zip) - the 3rd place of the ViZDoom Competition 2016 Limitted Deathmatch by **Dino Ratcliffe**
