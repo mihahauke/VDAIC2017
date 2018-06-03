@@ -1,5 +1,5 @@
 
-# Sample submissions for [Visual Doom AI Competition 2017 at CIG2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
+# Sample and Historical submissions for [Visual Doom AI Competition 2017 at CIG2017](http://vizdoom.cs.put.edu.pl/competition-cig-2017)
 ![doom_logo](https://upload.wikimedia.org/wikipedia/it/d/dd/Logo_doom.png)
 >> Submissions require [Docker](https://www.docker.com/). All images except for the host require quite recent Nvidia drivers and [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) to run CUDA.
 
