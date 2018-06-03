@@ -65,3 +65,5 @@ optional arguments:
 ### External files
 Some entries were too big to be shared on github, so we provide them externally:
 * [clyde](http://www.cs.put.poznan.pl/mkempka/misc/vizdoom2016_agents/clyde.zip) - the 3rd place of the ViZDoom Competition 2016 Limitted Deathmatch by **Dino Ratcliffe**
+
+* [2017 submissions](http://www.cs.put.poznan.pl/mkempka/misc/vizdoom2017_agents/) - best submissions of Visual Doom AI Competitions **2017** (both tracks)
